@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>數字: <span id="number">0</span></h1>
+  <button id="refreshButton">刷新</button>
+
+  <script>
+    $(document).ready(function() {
+      // 網頁加載完成後，向伺服器發送 GET 請求來獲取數字
+      $.get('/refresh', function(data) {
+        // 更新網頁上顯示的數字
+        $('#number').text(data.number);
+      });
+
+      // 按鈕點擊事件，點擊時向伺服器發送 GET 請求來刷新數字
+      $('#refreshButton').click(function() {
+        $.get('/refresh', function(data) {
+          // 更新網頁上顯示的數字
+          $('#number').text(data.number);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
