@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>使用者登入</title>
+  <style>
+    .container {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .error-message {
+      color: red;
+      margin-top: 10px;
+    }
+    
+    .image {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      background-image: url('close.jpg');
+      background-size: cover;
+      transition: background-image 0.5s ease;
+    }
+    
+    .image:hover {
+      background-image: url('open.jpg');
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>使用者登入</h2>
+    <form id="login-form">
+      <label for="password">密碼:</label>
+      <input type="password" id="password" name="password">
+      <br>
+      <button type="submit">登入</button>
+    </form>
+    <div id="error-message" class="error-message"></div>
+    <div class="image"></div>
+  </div>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+      
+      var passwordInput = document.getElementById("password");
+      var password = passwordInput.value;
+      var correctPassword = "harrythreeharry3";
+      
+      if (password === correctPassword) {
+        alert("登入成功！");
+      } else {
+        var errorMessage = document.getElementById("error-message");
+        errorMessage.textContent = "密碼錯誤！";
+        passwordInput.value = ""; 
+      }
+    });
+  </script>
+</body>
+</html>
